@@ -19,7 +19,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1'
+          dotnet-version: '6.0'
           include-prerelease: true
 
       - name: Build with dotnet
@@ -33,6 +33,10 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
+      - name: React Deploy to S3
+        # You may pin to the exact commit or the version.
+        # uses: jeanlescure/react-deploy-to-s3-action@5c5cffb04cf10e8ac735b5182be17915d8d5f5e0
+        uses: jeanlescure/react-deploy-to-s3-action@v1.1.0
 
   deploy:
     runs-on: windows-latest
